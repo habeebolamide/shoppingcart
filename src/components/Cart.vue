@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navbar />
-        <div class="container mb-5 mt-4">
+        <div class="container mb-5 mt-4" v-if="totalPrice != 0" >
             <div class="row">
                 <div class="col-md-4">
                     <h2>Summary</h2>
@@ -22,7 +22,7 @@
                             </h4>
                         </div>
                         <div class="col-md-6">
-                            <h4>100</h4>
+                            <h4>50</h4>
                         </div>
                         <hr class="mt-4">
                         <div class="col-md-6">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-6">
                             <h4>
-                                {{ totalPrice + 100 }}
+                                {{ totalPrice + 50 }}
                             </h4>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <EmptyCart v-if="totalPrice != 0" />
+        <EmptyCart v-if="totalPrice == 0" />
     </div>
 </template>
 <script>
