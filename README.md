@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Project Detail
+
+Built a shopping cart where you can add items to your cart using vuejs and vuex

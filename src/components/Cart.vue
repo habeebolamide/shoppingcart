@@ -44,9 +44,9 @@
                                 <li style="list-style-type: none;" v-for="item in cartItems " :key="item.id">
                                     <img :src=item.src class="mx-4" width="50px" height="50px" alt="" style="border-radius: 50%;">
                                     <span class="h4 mx-3">{{item.name}}</span>
-                                    <button class="mx-1" @click="addItem(item)">+</button>
+                                    <button class="mx-4 btn btn-light" @click="addItem(item)">+</button>
                                     <span>{{ item.quantity }}</span>
-                                    <button class="mx-1" @click="removeItem(item)">-</button>
+                                    <button class="mx-4 btn btn-light" @click="removeItem(item)">-</button>
                                     <span class="h4 mx-5">{{ item.price }}</span>
                                     <hr>
                                 </li>
