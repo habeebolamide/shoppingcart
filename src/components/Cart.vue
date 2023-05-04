@@ -94,10 +94,10 @@ export default {
     },
     makePayment (amount) {
       this.loading = true
-      let amount2 = amount * 100
+      let realamt = amount * 100
       const data = {
         email: "testpaypal415@gmail.com",
-        amount: amount2 * 700
+        amount: realamt * 700
       }
       const url = 'https://api.paystack.co/transaction/initialize'
       fetch(url, {
