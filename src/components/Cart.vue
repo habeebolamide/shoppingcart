@@ -53,7 +53,7 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="btn btn-success mt-4">
+                    <button class="btn btn-success mt-4" @click="makePayment(totalPrice + 50)">
                         Checkout
                     </button>
                 </div>
@@ -91,7 +91,40 @@ export default {
     },
     removeItem(product){
       this.$store.dispatch("removeItem",product)
-    }
-    }
+    },
+    makePayment (amount) {
+      this.loading = true
+      let amount2 = amount * 100
+      const data = {
+        email: "testpaypal415@gmail.com",
+        amount: amount2 * 700
+      }
+      const url = 'https://api.paystack.co/transaction/initialize'
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer sk_test_c7f4c3346047c4492198fa4ab0c5ed2d7bedadc4',
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(res => {
+          const paystack = new window.PaystackPop()
+          paystack.resumeTransaction(res.data.access_code)
+          this.loading = false
+          this.resetForm()
+        })
+        .catch(() => {
+          // handle error here
+        })
+    },
+    },
+    mounted () {
+    const popup = document.createElement('script')
+    popup.setAttribute('src', 'https://js.paystack.co/v2/inline.js')
+    popup.async = true
+    document.head.appendChild(popup)
+  },
 }
 </script>

@@ -46,7 +46,8 @@ export default {
     },
     removeItem(product){
       this.$store.dispatch("removeItem",product)
-    }
+    },
+  
   }
 }
 </script>
